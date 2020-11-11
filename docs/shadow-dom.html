@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+  <body>
+
+    <h2>Challenge - Check element in iFrame</h2>
+
+    <p>In some cases that you have to use iFrame, such as payment iframe, in this challenge, you need to access element in iFrame and check element is visible</p>
+
+    <div style='background-color: black; color: white;'>
+      <p>
+        <span style='color: #add8e6; font-weight: bold;'>Given</span> I navigate to this page <br />
+        <span style='color: #add8e6; font-weight: bold;'>Then</span> I should see the element with text "Me" within iFrame
+      </p>
+    </div>
+
+    <hr style='margin-bottom: 30px;' />
+
+    <div style='border:1px solid #ccc!important;'>
+
+      <script defer>
+        // Create a class for the element
+        class PopUpInfo extends HTMLElement {
+          constructor() {
+            // Always call super first in constructor
+            super();
+
+            // Create a shadow root
+            const shadow = this.attachShadow({
+              mode: 'open'
+            });
+
+            // Create spans
+            const wrapper = document.createElement('span');
+            wrapper.setAttribute('class', 'wrapper');
+
+            const icon = document.createElement('span');
+            icon.setAttribute('class', 'icon');
+            icon.setAttribute('tabindex', 0);
+
+            const info = document.createElement('span');
+            info.setAttribute('class', 'info');
+
+            // Take attribute content and put it inside the info span
+            const text = this.getAttribute('data-text');
+            info.textContent = text;
+
+            // Insert icon
+            let imgUrl;
+            if (this.hasAttribute('img')) {
+              imgUrl = this.getAttribute('img');
+            } else {
+              imgUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/240px-Infobox_info_icon.svg.png';
+            }
+
+            const img = document.createElement('img');
+            img.src = imgUrl;
+            icon.appendChild(img);
+
+            // Create some CSS to apply to the shadow dom
+            const style = document.createElement('style');
+            console.log(style.isConnected);
+
+            style.textContent = `
+      .wrapper {
+        position: relative;
+      }
+
+      .info {
+        font-size: 0.8rem;
+        width: 200px;
+        display: inline-block;
+        border: 1px solid black;
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
+        opacity: 0;
+        transition: 0.6s all;
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+        z-index: 3;
+      }
+
+      img {
+        width: 1.2rem;
+      }
+
+      .icon:hover + .info, .icon:focus + .info {
+        opacity: 1;
+      }
+    `;
+
+            // Attach the created elements to the shadow dom
+            shadow.appendChild(style);
+            console.log(style.isConnected);
+            shadow.appendChild(wrapper);
+            wrapper.appendChild(icon);
+            wrapper.appendChild(info);
+          }
+        }
+
+        // Define the new element
+        customElements.define('popup-info', PopUpInfo);
+
+      </script>
+      
+      <popup-info img="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/240px-Infobox_info_icon.svg.png" data-text="Your card validation code (CVC) is an extra security feature — it is the last 3 or 4 numbers on the back of your card."></popup-info>
+    </div>
+
+  </body>
+
+</html>
