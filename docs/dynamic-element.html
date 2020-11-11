@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+  <body>
+
+    <h2>Challenge - Check dynamic element</h2>
+
+    <p>Some elements are created from JS in FE code, instead of server rendering, in this challenge you need to check an dynamic element which will be created after [6, 12] seconds</p>
+
+    <div style='background-color: black; color: white;'>
+      <p>
+        <span style='color: #add8e6; font-weight: bold;'>Given</span> I navigate to this page <br />
+        <span style='color: #add8e6; font-weight: bold;'>Then</span> I should see the element with text "check Me"
+      </p>
+    </div>
+
+    <hr style='margin-bottom: 30px;' />
+
+    <div style='border:1px solid #ccc!important;'>
+      <script>
+      	setTimeout(function(){ 
+        	let span = document.createElement('span');
+					span.innerText = "check me";
+          span.id = "assertion";
+          
+          document.body.appendChild(span);
+        }, Math.floor(Math.random() * 6000) + 6000);
+      </script>
+    </div>
+  </body>
+</html>
