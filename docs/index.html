@@ -2,23 +2,29 @@
 <html>
 <body>
 
-<h2>JavaScript addEventListener()</h2>
+<h2>Challenge - Click the button and assert "You clicked" is displayed</h2>
 
-<p>This example uses the addEventListener() method to attach a click event to a button.</p>
+<p> The different network may make your tests have different results. Sometimes the automation is too fast to click on the element as the click event has not been binded.</p>
+<p> In this challenge, the click event is binded after X seconds randomly, X can be from 0 to 60 included. Write a code snippt in any language to test </p>
+ 
+ <div style='background-color: black; color: white;'>
+  <p>
+  <span style='color: #add8e6; font-weight: bold;'>Given</span> I click on button "click me" <br/>
+  <span style='color: #add8e6; font-weight: bold;'>Then</span> "You clicked" is displayed
+  </p>
+ </div>
 
-<button id="myBtn">Try it</button>
 
-<p id="demo"></p>
+<button id="action">Click me</button>
+
+<p id="assertion"></p>
 
 <script>
 
-setTimeout(function(){ document.getElementById("myBtn").addEventListener("click", displayDate);
- }, 5000);
-
-
+setTimeout(function(){ document.getElementById("action").addEventListener("click", displayDate);}, Math.floor(Math.random() * 3000) + 3000);
 
 function displayDate() {
-  document.getElementById("demo").innerHTML = Date();
+  document.getElementById("assertion").innerHTML = "You clicked";
 }
 </script>
 
