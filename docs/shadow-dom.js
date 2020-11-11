@@ -27,7 +27,7 @@ class PopUpInfo extends HTMLElement {
     if(this.hasAttribute('img')) {
       imgUrl = this.getAttribute('img');
     } else {
-      imgUrl = 'img/default.png';
+      imgUrl = 'https://mdn.github.io/web-components-examples/popup-info-box-web-component/img/alt.png';
     }
 
     const img = document.createElement('img');
