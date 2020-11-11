@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      /* Center the loader */
+      #loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 1;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+      }
+
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Add animation to "page content" */
+      .animate-bottom {
+        position: relative;
+        -webkit-animation-name: animatebottom;
+        -webkit-animation-duration: 1s;
+        animation-name: animatebottom;
+        animation-duration: 1s
+      }
+
+      @-webkit-keyframes animatebottom {
+        from {
+          bottom: -100px;
+          opacity: 0
+        }
+
+        to {
+          bottom: 0px;
+          opacity: 1
+        }
+      }
+
+      @keyframes animatebottom {
+        from {
+          bottom: -100px;
+          opacity: 0
+        }
+
+        to {
+          bottom: 0;
+          opacity: 1
+        }
+      }
+
+      #myDiv {
+        display: none;
+        text-align: center;
+      }
+
+    </style>
+  </head>
+
+  <body onload="myFunction()">
+
+    <h2>Challenge - Loading...</h2>
+
+    <p>Your page would be fully dynamiclly loaded after a loader, and the loader will gone after several seconds, in this challenge, you need to check the loader is exist, the loader is gone, and then you should see the content</p>
+
+    <div style='background-color: black; color: white;'>
+      <p>
+        <span style='color: #add8e6; font-weight: bold;'>Given</span> I am in this page<br />
+        <span style='color: #add8e6; font-weight: bold;'>Then</span> I should see loader is displayed <br />
+        <span style='color: #add8e6; font-weight: bold;'>And</span> I should see element with "check me" is displayed
+      </p>
+    </div>
+
+    <hr style='margin-bottom: 30px;' />
+
+    <div style='border:1px solid #ccc!important;'>
+
+      <div id="loader"></div>
+
+      <div style="display:none;" id="myDiv" class="animate-bottom">
+        <p id="assertion">Check me</p>
+      </div>
+
+
+    </div>
+
+    <script>
+      var myVar;
+
+      function myFunction() {
+        myVar = setTimeout(showPage, Math.floor(Math.random() * 3000));
+      }
+
+      function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("myDiv").style.display = "block";
+      }
+
+    </script>
+  </body>
+
+</html>
