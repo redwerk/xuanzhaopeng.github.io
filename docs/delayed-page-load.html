@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+  <body>
+
+    <h2>Challenge - Check element is visible after page content loaded</h2>
+
+    <p>Some page content loaded in a very slow speed, but automation framework try to assert some element is visible in N seconds before page loaded.</p>
+
+    <div style='background-color: black; color: white;'>
+      <p>
+        <span style='color: #add8e6; font-weight: bold;'>Given</span> I navigate to this page <br />
+        <span style='color: #add8e6; font-weight: bold;'>Then</span> I should see my element
+      </p>
+    </div>
+    
+    <hr style='margin-bottom: 30px;'/>
+
+    <div style='border:1px solid #ccc!important;'>
+      <p id="assertion">Me</p>
+
+      <script>
+        window.onload = function() {
+          console.log("onload is done!");
+        }
+
+        window.onload = function() {
+          console.log("onload is done!");
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+          console.log(`Dom Content loaded!`);
+        });
+
+
+        document.addEventListener('readystatechange', (event) => {
+          console.log(`Ready state: ${document.readyState}`);
+        });
+
+      </script>
+
+      <script type="module">
+        function sleep(ms) {
+          var start = new Date().getTime(), expire = start + ms;
+          while (new Date().getTime() < expire) { }
+          return;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+        	let sleepTime = Math.floor(Math.random() * 3000) + 3000;
+          console.log(`Took ${sleepTime}ms`);
+          sleep(sleepTime);
+        });
+    </script>
+    </div>
+
+  </body>
+
+</html>
