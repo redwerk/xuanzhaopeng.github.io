@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <head>
+      <style>
+        #container {
+          width: 350px;
+          height: 70px;
+          padding: 10px;
+          border: 1px solid #aaaaaa;
+        }
+
+      </style>
+      <script>
+        function allowDrop(ev) {
+          ev.preventDefault();
+        }
+
+        function drag(ev) {
+          ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+          ev.preventDefault();
+          var data = ev.dataTransfer.getData("text");
+          ev.target.appendChild(document.getElementById(data));
+        }
+
+      </script>
+    </head>
+  </head>
+
+  <body>
+
+    <h2>Challenge - Drag and Drop</h2>
+
+    <p>In some UI, you need to drag element and put to another place, in this challenge you need to drag the text and drop to the container, and check the element is inside the containder afterwards</p>
+
+    <div style='background-color: black; color: white;'>
+      <p>
+        <span style='color: #add8e6; font-weight: bold;'>Given</span> I drag the dragMe item to container<br />
+        <span style='color: #add8e6; font-weight: bold;'>Then</span> I should see the element with text "check Me"
+      </p>
+    </div>
+
+    <hr style='margin-bottom: 30px;' />
+
+    <div style='border:1px solid #ccc!important;'>
+
+      <div id="container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <br>
+      <span id="dragMe" draggable="true" ondragstart="drag(event)" width="336" height="69">
+        dragMe
+      </span>
+    </div>
+  </body>
+
+</html>
