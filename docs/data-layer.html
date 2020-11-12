@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LPESVDE2N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4LPESVDE2N');
+    </script>
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+    <div style="width:80%; margin:0 auto;">
+
+
+      <h2>Challenge - Catch data layer event</h2>
+
+      <p> In most of websites, we have data layer within javascript to send the client usage back to analytics server, to provide further evidence of A/B testing or optimise the product.</p>
+      <p> In this challenge, we assume we already have an function "triggerEvent" which accept an object to send data back to analytics server, there will be 2 kinds of event sent out,  one is with {name: 'others'}, another is with {name: 'target'}, what you should to catch all kinds of events. It respecs following logic about these 2 events: </p>
+      
+      <p> * if there are X(X > 1) events triggered, then it should have X-1 events like {name: "others"}, and 1 event like {name: "target"} </p>
+      <p> * if there are only 1 event triggered, then it should only have 1 event like {name: "target"}
+      </p> * if there are 0 event triggered, then you should not see any events
+
+      <div style='background-color: black; color: white;'>
+        <p>
+          <span style='color: #add8e6; font-weight: bold;'>Given</span> I click on button "click me" <br />
+          <span style='color: #add8e6; font-weight: bold;'>Then</span> data layer event has been triggered based on above logic
+        </p>
+      </div>
+
+      <hr style='margin-bottom: 30px;'/>
+
+      <div style='border:1px solid #ccc!important;'>
+        <a id="action" href="simple.html">Click me</a>
+
+        <div>
+          Total event triggered: <span id="assertion"></span>
+        </div>
+        <script>
+          const times = Math.floor(Math.random() * 6);
+      		$('#assertion').text(times);
+        	function triggerEvent(data) {
+             console.log(`event ${JSON.stringify(data)} trigered`);
+          }
+          
+          if(times > 1) {
+            for (i = 0; i < times-1; i++) {
+              $('#action').click(function() {
+                triggerEvent({name: 'others'});
+              });
+            }
+          }
+          
+          if(times > 0) {
+          	$('#action').click(function() {
+              triggerEvent({name: 'target'});
+            });
+          }
+        </script>
+      </div>
+
+
+    </div>
+  </body>
+
+</html>
