@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LPESVDE2N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4LPESVDE2N');
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+
+    <h2>Challenge - Wait for network requests</h2>
+
+    <p>The app become more and more complicated to test, sometimes you have to wait for specific network has been triggered and then continue test. In this challenge, there is an api call to get all of user data, and just randomly display one of the user's data in the dom. The network request will be triggered after random seconds delay, you are asked to wait until request is triggered and check the name and email field is not empty,</p>
+
+
+
+    <div style='background-color: black; color: white;'>
+      <p>
+        <span style='color: #add8e6; font-weight: bold;'>Given</span> I navigate to this page<br />
+        <span style='color: #add8e6; font-weight: bold;'>Then</span> user api is triggered<br />
+        <span style='color: #add8e6; font-weight: bold;'>And</span> I see name and email fields are not empty
+      </p>
+    </div>
+
+    <hr style='margin-bottom: 30px;' />
+
+    <div>
+      name: <span id="name"></span>
+    </div>
+    <div>
+      email: <span id="email"></span>
+    </div>
+
+    <script>
+      function loadData() {
+        fetch('https://gorest.co.in/public-api/users')
+          .then(response => response.json())
+          .then(data => {
+            const index = Math.floor(Math.random() * data.data.length)
+            const d = data.data[index];
+            $('#name').text(d.name);
+            $('#email').text(d.email);
+          });
+      }
+
+      setTimeout(loadData, Math.floor(Math.random() * 8000) + 6000);
+
+    </script>
+
+  </body>
+
+</html>
