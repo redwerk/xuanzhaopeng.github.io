@@ -16,7 +16,7 @@
       .wrapper {
         position: relative;
         overflow: hidden;
-        width: 100px;
+        width: 400px;
         height: 100px;
         border: 1px solid black;
         margin: 0px;
@@ -25,14 +25,14 @@
 
       #slide {
         position: relative;
-        left: -120px;
-        width: 100px;
+        left: -420px;
+        width: 400px;
         height: 100px;
         background: blue;
         -webkit-animation: slide 0.5s forwards;
         -webkit-animation-delay: 2s;
         animation: slide 10s forwards;
-        animation-delay: 6s;
+        animation-delay: 2s;
       }
 
       @-webkit-keyframes slide {
@@ -51,18 +51,18 @@
   </head>
 
   <body>
-    <h2>Challenge - Elements</h2>
+    <h2>Challenge - Animation</h2>
 
-    <p>Unfortunately you have to play with multiple items which has same class name, such as a list of items are generated from server side</p>
+    <p>Your website maybe have a lot of animations! Such aas the the animation for the menu bar</p>
 
-    <p>In this challenge, you should NOT get element by text as the text is randomly changed, there are a lot of items which has class "item", but some of them are not displayed, and others are visible, you should NOT use index to get displayed elements, as the index of displayed elements is also random. There are at least 2 displayed element, the task is to click on 2nd displayed element, and assert the value filed has correct data</p>
+    <p>In this challenge, there is a div that shows up after an animation, it has X seconds delay to start the animation,  and the animation will take Y seconds to complete, X and Y are random values, in range [0, 60] seconds. There is 1 item within the container, your task is to click on this item and check value "You clicked" is displayed </p>
 
 
 
     <div style='background-color: black; color: white;'>
       <p>
-        <span style='color: #add8e6; font-weight: bold;'>Given</span> I click on 2nd displayed item<br />
-        <span style='color: #add8e6; font-weight: bold;'>Then</span> I see value failed contains "2"
+        <span style='color: #add8e6; font-weight: bold;'>Given</span> I click on the item<br />
+        <span style='color: #add8e6; font-weight: bold;'>Then</span> I see value failed contains "You clicked"
       </p>
     </div>
 
@@ -70,6 +70,9 @@
 
     <div style="margin:0px; padding:0px">
       <div class="wrapper" id="slide">
+        <div id="item" style='width: 50px; height: 100px; background-color: red;'>
+            Test1
+        </div>
       </div>
     </div>
 
@@ -80,7 +83,7 @@
 
 
     <script>
-      $("#slide").click(function() {
+      $("#item").click(function() {
         $('#assertion').text('You clicked');
       });
 
