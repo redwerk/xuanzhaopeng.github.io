@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .slidecontainer {
+        width: 100%;
+      }
+
+      .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 25px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+      }
+
+      .slider:hover {
+        opacity: 1;
+      }
+
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+      }
+
+      .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+      }
+
+    </style>
+     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LPESVDE2N"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-4LPESVDE2N');
+      </script>
+  </head>
+
+  <body>
+
+
+    <h2>Challenge - Range Slider</h2>
+
+    <p>Sometimes you have to play with a range slider, such as price filter in most of e-com websites, in this challenge you need to check the Value field has been changed when you move the slider's position</p>
+
+
+
+    <div style='background-color: black; color: white;'>
+      <p>
+        <span style='color: #add8e6; font-weight: bold;'>Given</span> I move the slider position to somewhere <br />
+        <span style='color: #add8e6; font-weight: bold;'>Then</span> I see the value filed has been changed
+      </p>
+    </div>
+
+    <hr style='margin-bottom: 30px;' />
+
+    <div class="slidecontainer">
+      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+      <p>Value: <span id="demo"></span></p>
+    </div>
+
+    <script>
+      var slider = document.getElementById("myRange");
+      var output = document.getElementById("demo");
+      output.innerHTML = slider.value;
+
+      slider.oninput = function() {
+        output.innerHTML = this.value;
+      }
+
+    </script>
+
+  </body>
+
+</html>
