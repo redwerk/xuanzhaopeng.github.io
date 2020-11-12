@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LPESVDE2N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-4LPESVDE2N');
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+    <style>
+      .wrapper {
+        position: relative;
+        overflow: hidden;
+        width: 400px;
+        height: 100px;
+        border: 1px solid black;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      #slide {
+        position: relative;
+        left: -420px;
+        width: 400px;
+        height: 100px;
+        background: blue;
+        -webkit-animation: slide 0.5s forwards;
+        -webkit-animation-delay: 2s;
+        animation: slide 10s forwards;
+        animation-delay: 2s;
+      }
+
+      @-webkit-keyframes slide {
+        100% {
+          left: 0;
+        }
+      }
+
+      @keyframes slide {
+        100% {
+          left: 0;
+        }
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h2>Challenge - Console Errors</h2>
+
+    <p>Your business is asking for checking it should NOT raise a specific error or generic error from Front-end code, which to make your user experimence become more smooth.</p>
+
+    <p>In this challenge, you need to find a way to catch the specific errors, which has error message "My error challenge!", but you don't know how many times of this error will happen. Your task is to catch all errors, and then match the count of errors to the value in expected error count field. The errors count will be changed dynamicly,  and we don't ensure the expected error count value will be visible ealier then triggering the errors, so it's not a good idea to wait until there are X errors, but all errors will be triggered immediately after page loaded. </p>
+
+
+
+    <div style='background-color: black; color: white;'>
+      <p>
+        <span style='color: #add8e6; font-weight: bold;'>Given</span> I navigate to current page<br />
+        <span style='color: #add8e6; font-weight: bold;'>Then</span> I see count of catched errors match to the expect errors count
+      </p>
+    </div>
+
+    <hr style='margin-bottom: 30px;' />
+
+
+    <div>
+      expect erros count: <span id="assertion"></span>
+    </div>
+
+
+    <script>
+      const times = Math.floor(Math.random() * 11);
+      $('#assertion').text(times);
+      
+      function test() {
+        throw 'My error challenge!';
+      }
+      
+			for (i = 0; i < times; i++) {
+        $(function() {
+          test();
+      	});
+      }
+
+    </script>
+
+  </body>
+
+</html>
