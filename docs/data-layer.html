@@ -20,11 +20,11 @@
       <h2>Challenge - Catch data layer event</h2>
 
       <p> In most of websites, we have data layer within javascript to send the client usage back to analytics server, to provide further evidence of A/B testing or optimise the product.</p>
-      <p> In this challenge, we assume we already have an function "triggerEvent" which accept an object to send data back to analytics server, there will be 2 kinds of event sent out,  one is with {name: 'others'}, another is with {name: 'target'}, what you should to catch all kinds of events. It respecs following logic about these 2 events: </p>
+      <p> In this challenge, we assume we already have an function "triggerEvent" which accept an object to send data back to analytics server, there will be 2 kinds of event sent out,  one with data {name: 'others'}, another with data {name: 'target'}, what you should do is to catch all kinds of events based on following logic:</p>
       
       <p> * if there are X(X > 1) events triggered, then it should have X-1 events like {name: "others"}, and 1 event like {name: "target"} </p>
-      <p> * if there are only 1 event triggered, then it should only have 1 event like {name: "target"}
-      </p> * if there are 0 event triggered, then you should not see any events
+      <p> * if there are only 1 event triggered, then it should only have 1 event like {name: "target"} </p>
+      <p> * if there are 0 event triggered, then you should not see any events </p>
 
       <div style='background-color: black; color: white;'>
         <p>
