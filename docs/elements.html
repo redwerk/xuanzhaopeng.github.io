@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LPESVDE2N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4LPESVDE2N');
+    </script>
+  </head>
+  <body>
+    <h2>Challenge - Elements</h2>
+
+    <p>Unfortunately you have to play with multiple items which has same class name, such as a list of items are generated from server side</p>
+    
+    <p>In this challenge, you should NOT get element by text as the text is randomly changed, there are a lot of items which has class "item", but some of them are not displayed, and others are visible, you should NOT use index to get displayed elements, as the index of displayed elements is also random. There are at least 2 displayed element, the task is to click on 2nd displayed element, and assert the value filed has correct data</p>
+
+
+
+    <div style='background-color: black; color: white;'>
+      <p>
+        <span style='color: #add8e6; font-weight: bold;'>Given</span> I click on 2nd displayed item<br />
+        <span style='color: #add8e6; font-weight: bold;'>Then</span> I see value failed contains "2"
+      </p>
+    </div>
+
+    <hr style='margin-bottom: 30px;' />
+
+    <div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(1)">random data1</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+      <div class="item" onclick="test(2)">random data2</div>
+      <div class="item" onclick="test(0)" style="display:none">item</div>
+    </div>
+    
+    <div>
+        Value: <span id="assertion"></span>
+    </div>
+
+    <script>
+    	function test(v) {
+         if(v > 0) {
+            document.getElementById("assertion").innerText = `yes!!! value is ${v}`
+         }
+      }
+    </script>
+
+  </body>
+
+</html>
